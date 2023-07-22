@@ -30,7 +30,7 @@ const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
     message = simplifiedError.message
     errorMessages = simplifiedError.errorMessages
   } else if (err instanceof ApiError) {
-    console.log('hei i am from ApiError class error')
+    console.log('hei i am from ApiError class error', err)
     statusCode = err.statusCode
     message = err?.message
     errorMessages = err?.message

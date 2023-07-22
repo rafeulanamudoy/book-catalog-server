@@ -31,6 +31,7 @@ export type ILoginUser = {
 export type ILoginUserResponse = {
   refreshToken?: string
   accessToken: string
+  email: string
 }
 export type IRefreshTokenResponse = {
   accessToken: string

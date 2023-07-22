@@ -42,6 +42,7 @@ const loginUser = async (
   return {
     accessToken,
     refreshToken,
+    email: userEmail,
   }
 }
 const refreshToken = async (token: string) => {
