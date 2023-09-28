@@ -12,3 +12,6 @@ export type IBook = {
   copies: number
   reviews?: string[]
 }
+export type IBookFilters = {
+  query?: string
+}
