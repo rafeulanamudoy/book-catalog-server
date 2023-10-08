@@ -21,7 +21,7 @@ const calculatePagination = async (
   const defaultLimit = await Book.find({}).count()
   const page = Number(options.page || 1)
   const limit = Number(options.limit || defaultLimit)
-  const sortBy = options.sortBy || 'createAt'
+  const sortBy = options.sortBy || 'createdAt'
   const sortOrder = options.sortOrder || 'desc'
   const skip = (page - 1) * limit
   return {

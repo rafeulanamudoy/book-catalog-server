@@ -6,36 +6,41 @@ const UserReveiw = {
   reveiw: String,
 }
 
-const bookSchema = new Schema<IBook>({
-  Title: {
-    type: String,
-    required: true,
-  },
-  Email: {
-    type: String,
-    required: true,
-  },
-  Author: {
-    type: String,
-    required: true,
-  },
-  Genre: {
-    type: String,
-    required: true,
-  },
-  PublicationDate: {
-    type: Date,
-    required: true,
-  },
-  Image: {
-    type: String,
-    required: true,
-  },
+const bookSchema = new Schema<IBook>(
+  {
+    Title: {
+      type: String,
+      required: true,
+    },
+    Email: {
+      type: String,
+      required: true,
+    },
+    Author: {
+      type: String,
+      required: true,
+    },
+    Genre: {
+      type: String,
+      required: true,
+    },
+    PublicationDate: {
+      type: Date,
+      required: true,
+    },
+    Image: {
+      type: String,
+      required: true,
+    },
 
-  reviews: {
-    type: [UserReveiw],
-    default: [],
+    reviews: {
+      type: [UserReveiw],
+      default: [],
+    },
   },
-})
+  {
+    timestamps: true,
+  }
+)
 
 export const Book = model<IBook>('Book', bookSchema)

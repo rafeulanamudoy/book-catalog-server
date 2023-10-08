@@ -66,7 +66,7 @@ const getBooks = async (
   }
   console.log(sortCondition, 'to check sort condition')
   const whereConditions = andCondition.length > 0 ? { $and: andCondition } : {}
-
+  console.log('sortCondition', sortCondition)
   const result = await Book.find(whereConditions).sort(sortCondition).skip(skip)
 
   const count = await Book.countDocuments()
@@ -90,7 +90,13 @@ const getBooks = async (
     }
   }
 }
+
+const getSingleBook = async (id: string): Promise<IBook | null> => {
+  const getBook = await Book.findById(id)
+  return getBook
+}
 export const BookService = {
   createBook,
   getBooks,
+  getSingleBook,
 }
