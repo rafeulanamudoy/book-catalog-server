@@ -1,16 +1,17 @@
-type IStatus = 'In Stock' | 'Out Of Stock'
+type UserReveiw = {
+  email: string
+  reveiw: string
+}
 
 export type IBook = {
   Title: string
+  Email: string
   Author: string
   Genre: string
   PublicationDate: Date
   Image: string
-  status: IStatus
-  rating: number
-  price: number
-  copies: number
-  reviews?: string[]
+
+  reviews?: UserReveiw[]
 }
 export type IBookFilters = {
   query?: string

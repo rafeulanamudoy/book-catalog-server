@@ -14,7 +14,7 @@ const createUser = catchAsync(async (req: Request, res: Response) => {
   if (result !== null) {
     // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
     const { password, ...others } = result
-    console.log(result)
+    console.log(result,"i am from controller to check success")
 
     sendResponse(res, {
       success: true,

@@ -10,6 +10,7 @@ const createUser = async (user: IUser): Promise<IUser | null> => {
   // console.log(user)
 
   const createUser = (await User.create(user)).toObject()
+  //console.log(createUser, 'im to check from service is user created')
   return createUser
 }
 const loginUser = async (

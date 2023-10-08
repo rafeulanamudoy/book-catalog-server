@@ -1,12 +1,20 @@
 import { Schema, model } from 'mongoose'
 import { IBook } from './book.interface'
-const statusLabel = ['In Stock', 'Out Of Stock']
+
+const UserReveiw = {
+  email: String,
+  reveiw: String,
+}
+
 const bookSchema = new Schema<IBook>({
   Title: {
     type: String,
     required: true,
   },
-
+  Email: {
+    type: String,
+    required: true,
+  },
   Author: {
     type: String,
     required: true,
@@ -23,25 +31,10 @@ const bookSchema = new Schema<IBook>({
     type: String,
     required: true,
   },
-  status: {
-    type: String,
-    required: true,
-    enum: statusLabel,
-  },
-  rating: {
-    type: Number,
-    required: true,
-  },
-  price: {
-    type: Number,
-    required: true,
-  },
-  copies: {
-    type: Number,
-    required: true,
-  },
+
   reviews: {
-    type: [String],
+    type: [UserReveiw],
+    default: [],
   },
 })
 

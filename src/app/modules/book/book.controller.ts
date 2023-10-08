@@ -20,7 +20,8 @@ const createBook = catchAsync(async (req: Request, res: Response) => {
   })
 })
 const getBooks = catchAsync(async (req: Request, res: Response) => {
-  //console.log('query check', req.query)
+  console.log('query check', req.query)
+  console.log(typeof req.query.publicationYear)
   const paginationOptions = pick(req.query, paginationFileds)
   const filters = pick(req.query, bookFilterableField)
   const result = await BookService.getBooks(filters, paginationOptions)

@@ -17,7 +17,7 @@ const getBooks = async (
   console.log(paginationOptions, 'paginationOptions')
   console.log(filters, 'i am from service to check filters')
   const { skip, limit, page, sortBy, sortOrder } =
-    paginationHelpers.calculatePagination(paginationOptions)
+    await paginationHelpers.calculatePagination(paginationOptions)
 
   const { query, ...filtersData } = filters
 
@@ -67,16 +67,15 @@ const getBooks = async (
   console.log(sortCondition, 'to check sort condition')
   const whereConditions = andCondition.length > 0 ? { $and: andCondition } : {}
 
-  const result = await Book.find(whereConditions)
-    .sort(sortCondition)
-    .skip(skip)
-    .limit(limit)
+  const result = await Book.find(whereConditions).sort(sortCondition).skip(skip)
+
   const count = await Book.countDocuments()
   if (andCondition.length > 0) {
     return {
       meta: {
         page,
         limit,
+        count,
       },
       data: result,
     }
@@ -90,22 +89,6 @@ const getBooks = async (
       data: result,
     }
   }
-
-  // const result = await Book.findById('64bbf7a1f4ed97a8843b12e7')
-  // console.log(result)
-
-  // const year = 2022 // Replace with the desired year
-  // const startDate = new Date(`${year}-01-01T00:00:00.000Z`)
-  // const endDate = new Date(`${year + 1}-01-01T00:00:00.000Z`)
-
-  // const result = await Book.find({
-  //   PublicationDate: {
-  //     $gte: startDate,
-  //     $lt: endDate,
-  //   },
-  // })
-
-  // console.log(result)
 }
 export const BookService = {
   createBook,
