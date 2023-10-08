@@ -95,8 +95,21 @@ const getSingleBook = async (id: string): Promise<IBook | null> => {
   const getBook = await Book.findById(id)
   return getBook
 }
+
+const updateBookReveiw = async (
+  id: string,
+  review: { email: string; reveiw: string }
+): Promise<IBook | null> => {
+  const updateBook = await Book.findOneAndUpdate(
+    { _id: id },
+    { $push: { reviews: review } },
+    { returnOriginal: false }
+  )
+  return updateBook
+}
 export const BookService = {
   createBook,
   getBooks,
   getSingleBook,
+  updateBookReveiw,
 }
