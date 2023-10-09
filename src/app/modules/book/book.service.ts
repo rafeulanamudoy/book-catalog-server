@@ -118,10 +118,16 @@ const updateBook = async (
 
   return updateBook
 }
+const deleteBook = async (id: string): Promise<IBook | null> => {
+  const result = await Book.findByIdAndDelete(id)
+
+  return result
+}
 export const BookService = {
   createBook,
   getBooks,
   getSingleBook,
   updateBookReveiw,
   updateBook,
+  deleteBook,
 }
