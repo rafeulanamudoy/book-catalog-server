@@ -21,7 +21,7 @@ const createBook = catchAsync(async (req: Request, res: Response) => {
 })
 const getBooks = catchAsync(async (req: Request, res: Response) => {
   console.log('query check', req.query)
-  console.log(typeof req.query.publicationYear)
+  //console.log(typeof req.query.publicationYear)
   const paginationOptions = pick(req.query, paginationFileds)
   const filters = pick(req.query, bookFilterableField)
   const result = await BookService.getBooks(filters, paginationOptions)
@@ -36,7 +36,7 @@ const getBooks = catchAsync(async (req: Request, res: Response) => {
 
 const getSingleBook = catchAsync(async (req: Request, res: Response) => {
   const id = req.params.id
-  console.log(id)
+  //console.log('from getSinglebook', id)
   const result = await BookService.getSingleBook(id)
 
   sendResponse(res, {

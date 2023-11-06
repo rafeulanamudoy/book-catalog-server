@@ -123,6 +123,7 @@ const deleteBook = async (id: string): Promise<IBook | null> => {
 
   return result
 }
+
 export const BookService = {
   createBook,
   getBooks,

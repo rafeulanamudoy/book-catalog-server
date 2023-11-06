@@ -5,7 +5,7 @@ import config from './config'
 import { Server } from 'http'
 let server: Server
 process.on('uncaughtException', error => {
-  console.log(error)
+  console.log('uncaught exception error', error)
   process.exit(1)
 })
 async function boostrap() {
@@ -23,7 +23,7 @@ async function boostrap() {
     console.log('unhandled rejection detected,we are closing out server')
     if (server) {
       server.close(() => {
-        console.log(error)
+        console.log('from server.close', error)
         process.exit(1)
       })
     } else {
